@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/main/resources/static/style.css">
+</head>
+<body>
+<header class="cabecalho">
+    <h1 class="titulo-cabecalho">Hospital</h1>
+    <li class="lista-cabecalho">
+        <a class="a-cabecalho"href="/patient">Pacientes</a>
+        <a class="a-cabecalho"href="/doctor">Médicos</a>
+        <a class="a-cabecalho"href="#">Historico</a>
+
+        <a href="/newDoctor"class="newDoctor">Novo Médico</a>
+
+    </li>
+
+</header>
+<main>
+    <section>
+        <h1 class="title-main"> Medicos </h1>
+        <div class="divBusca">
+            <input type="text" id="txtBusca" placeholder="Buscar..." />
+        </div>
+    </section>
+
+
+
+
+    <section class="primary-section" th:each="doct : ${doctor}">
+        <h1 class="title-cards">Medico(a) <span th:text="${doct.name}"></span> </h1>
+        <div>
+
+            <h4 class="patient_exit" >Telefone: <span th:text="${doct.telephone}"></span> </h4>
+            <h4 class="pacient_entry" >Cargo: <span th:text="${doct.office}"></span></h4>
+            <h4 class="pacient_entry" >Departamento: <span th:text="${doct.department}"></span></h4>
+
+             <a th:href="@{/doctor/{id}/delete(id = ${doct.id})}"> deletar</a>
+        </div>
+
+    </section>
+</main>
+
+</footer>
+</body>
+</html>
